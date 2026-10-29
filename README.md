@@ -67,7 +67,7 @@ The library does not infer Good Service, Suspended, Delayed, or Not Scheduled.
 * https://www.panynj.gov/content/dam/path/trip-planner/trip-planner-config.json
 
 These public website endpoints have no published stability guarantee. Schema
-changes raise `InvalidFeed` (a `ValueError`); network/HTTP/decoding failures raise
+changes, invalid JSON or excessive response sizes raise `InvalidFeed` (a `ValueError`); network/HTTP failures raise
 `CannotConnect`. `RateLimited`, a `CannotConnect` subclass, exposes `.seconds`.
 Requests have a ten-second total timeout and a 1 MiB decoded response limit.
 There are no immediate retries. After Retry-After, the caller decides when to
@@ -96,3 +96,4 @@ Publishing in the `pypi` environment. No long-lived upload token is used.
 
 Code is MIT licensed. Captured feed excerpts are test data, not a claim of
 ownership of Port Authority content. Live content remains the provider's.
+
