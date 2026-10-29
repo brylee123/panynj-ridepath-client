@@ -1,0 +1,157 @@
+{
+  "stations": [
+    { "id": "NWK", "name": "Newark",             "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "HAR", "name": "Harrison",           "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "JSQ", "name": "Journal Square",     "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "GRV", "name": "Grove Street",       "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "EXP", "name": "Exchange Place",     "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "WTC", "name": "World Trade Center", "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "NEW", "name": "Newport",            "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": true  },
+    { "id": "HOB", "name": "Hoboken",            "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": false },
+    { "id": "CHR", "name": "Christopher Street", "accessible": false, "hasElevatorAlerts": false, "hasEscalatorAlerts": false },
+    { "id": "09S", "name": "9th Street",         "accessible": false, "hasElevatorAlerts": false, "hasEscalatorAlerts": false },
+    { "id": "14S", "name": "14th Street",        "accessible": false, "hasElevatorAlerts": false, "hasEscalatorAlerts": false },
+    { "id": "23S", "name": "23rd Street",        "accessible": false, "hasElevatorAlerts": false, "hasEscalatorAlerts": false },
+    { "id": "33S", "name": "33rd Street",        "accessible": true,  "hasElevatorAlerts": true,  "hasEscalatorAlerts": false }
+  ],
+
+  "lines": {
+    "red": {
+      "id": "red",
+      "label": "Newark → World Trade Center",
+      "origin": "Newark",
+      "destination": "World Trade Center",
+      "stops": ["NWK", "HAR", "JSQ", "GRV", "EXP", "WTC"]
+    },
+    "yellow": {
+      "id": "yellow",
+      "label": "Journal Square → 33rd Street",
+      "origin": "Journal Square",
+      "destination": "33rd Street",
+      "stops": ["JSQ", "GRV", "NEW", "CHR", "09S", "14S", "23S", "33S"]
+    },
+    "green": {
+      "id": "green",
+      "label": "Hoboken → World Trade Center",
+      "origin": "Hoboken",
+      "destination": "World Trade Center",
+      "stops": ["HOB", "NEW", "EXP", "WTC"]
+    },
+    "blue": {
+      "id": "blue",
+      "label": "Hoboken → 33rd Street",
+      "origin": "Hoboken",
+      "destination": "33rd Street",
+      "stops": ["HOB", "CHR", "09S", "14S", "23S", "33S"]
+    },
+    "night-yellow": {
+      "id": "night-yellow",
+      "label": "Journal Square → 33rd Street (Overnight via Hoboken)",
+      "origin": "Journal Square",
+      "destination": "33rd Street",
+      "stops": ["JSQ", "GRV", "NEW", "HOB", "CHR", "09S", "14S", "23S", "33S"]
+    }
+  },
+
+  "transfers": {
+    "red":          { "JSQ": ["yellow"], "GRV": ["yellow"], "EXP": ["green"], "WTC": ["green"] },
+    "yellow":       { "JSQ": ["red"], "GRV": ["red"], "NEW": ["green"], "CHR": ["blue"], "09S": ["blue"], "14S": ["blue"], "23S": ["blue"], "33S": ["blue"] },
+    "green":        { "NEW": ["yellow"], "EXP": ["red"], "WTC": ["red"] },
+    "blue":         { "CHR": ["yellow"], "09S": ["yellow"], "14S": ["yellow"], "23S": ["yellow"], "33S": ["yellow"] },
+    "night-yellow": { "JSQ": ["red"], "GRV": ["red"] }
+  },
+
+  "routeColors": {
+    "red":          { "id": "red",          "hex": "#d93a30",                      "label": "Red Line"    },
+    "blue":         { "id": "blue",         "hex": "#4d92fb",                      "label": "Blue Line"   },
+    "green":        { "id": "green",        "hex": "#65c100",                      "label": "Green Line"  },
+    "yellow":       { "id": "yellow",       "hex": "#ff9900",                      "label": "Yellow Line" },
+    "night-yellow": { "id": "night-yellow", "hex": "#fffe56", "border": "#999900", "label": "Yellow Line" }
+  },
+
+  "limits": {
+    "additionalTripsMax": 4
+  },
+
+  "verticalTransitOrder": [
+    "JSQ", "GRV", "NEW", "EXP", "HOB", "WTC", "NWK",
+    "CHR", "09S", "14S", "23S", "33S", "HAR"
+  ],
+
+  "copy": {
+    "tabs": {
+      "liveTimes": "Live Times",
+      "planYourTrip": "Plan Your Trip",
+      "serviceChanges": "Service Changes",
+      "elevatorsEscalators": "Elevators & Escalators",
+      "alerts": "Alerts"
+    },
+    "header": {
+      "title": "Plan Your Trip"
+    },
+    "planForm": {
+      "directionLabel": "Select Direction",
+      "originLabel": "Place of Origin",
+      "originPlaceholder": "Select origin station",
+      "destinationLabel": "Place of Arrival",
+      "destinationPlaceholder": "Select destination station",
+      "dateLabel": "Date",
+      "departureTimeLabel": "Departure Time",
+      "submitButton": "Plan Your Trip"
+    },
+    "tripResults": {
+      "heading": "Trip Results",
+      "fromLabel": "From:",
+      "toLabel": "To:",
+      "leavingLabel": "Leaving",
+      "arrivingLabel": "Arriving:",
+      "resetButton": "Reset Trip",
+      "suggestedRouteHeading": "Suggested Route",
+      "additionalDeparturesHeading": "Additional Departure Times",
+      "departsLabel": "Departs"
+    },
+    "liveTimes": {
+      "weekdayLabel": "Weekday",
+      "weekdaySubtitle": "Monday — Friday",
+      "weekendLabel": "Weekend",
+      "weekendSubtitle": "Saturday, Sunday & holidays",
+      "dayServiceLabel": "Day Service",
+      "nightServiceLabel": "Night Service",
+      "dayShortLabel": "Day",
+      "nightShortLabel": "Night",
+      "directionLabel": "Select Direction",
+      "nowButton": "Now",
+      "errorMessage": "Unable to load live times.",
+      "noUpcomingTrains": "No upcoming trains.",
+      "loadingMessage": "Loading…",
+      "transferAvailableLabel": "Transfer Available To",
+      "serviceAlertsLabel": "Service Alerts",
+      "elevatorsOperational": "Elevators are operational"
+    },
+    "stationCombobox": {
+      "defaultPlaceholder": "Select station",
+      "noMatchMessage": "No stations match"
+    },
+    "directionSelect": {
+      "mobileTitle": "Select Direction"
+    },
+    "alerts": {
+      "heading": "Active PATH Alerts",
+      "emptyMessage": "No active alerts at this time.",
+      "errorMessage": "Unable to load alerts. Please try again later.",
+      "loadingMessage": "Loading alerts…",
+      "statusActive": "Active",
+      "statusResolved": "Resolved"
+    },
+    "validation": {
+      "originRequired": "Please select an origin station.",
+      "destinationRequired": "Please select a destination station.",
+      "sameStation": "Origin and destination must be different.",
+      "invalidDateTime": "Please choose a valid date and time."
+    },
+    "loading": {
+      "calculatingRoute": "Calculating your route…",
+      "default": "Loading…"
+    }
+  }
+}
